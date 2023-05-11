@@ -1,0 +1,42 @@
+###
+GET http://localhost:4000/api/v1/auth/ad
+
+###
+### bắm link lung tung trả về route return trong routes/index
+GET http://localhost:4000/api/v2/user/
+
+###
+POST http://localhost:4000/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "name": "admin test",
+    "email": "admin@gmail.com",
+    "password": "123456"
+}
+
+###
+POST http://localhost:4000/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "test1@gmail.com",
+    "password": "123456"
+}
+
+### 
+GET http://localhost:4000/api/v2/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJuYW1lIjoidXNlciB0ZXN0Iiwicm9sZV9jb2RlIjoiUjEiLCJpYXQiOjE2ODM2NTExMDksImV4cCI6MTY4NDA4MzEwOX0.geDO5xFNPqQvh2LsW7RNYvaoM9Cu0TPhEfAnV9SGDII
+
+
+### chỉ bắm 1 lần k nên mang ra để test route
+#GET http://localhost:4000/api/v2/insert/
+
+###
+GET http://localhost:4000/api/v2/book/listbook?name=the_pass
+###
+GET http://localhost:4000/api/v2/book/listbook?order[]=price&order[]=DESC&limit=2&name=you
+###
+GET http://localhost:4000/api/v2/book/listbook?available=3
+###
+GET http://localhost:4000/api/v2/book/listbook?available[]=2&available[]=3
