@@ -86,5 +86,21 @@ export const createNewBook = (body, fileData) => new Promise ( async (resolve, r
 })
 
 // update
-
+export const updateBook = ({bId, ...body}, fileData) => new Promise (async (resolve, reject) => {
+    try {
+        const response = await db.Book.update(body,{
+            where: {id: bId}
+        });
+        console.log(response)
+        resolve({
+            err: response[0] > 0 ? 0: 1,
+            message: response[0] > 0 ? `${response[0]} book updated`: 'can not updated new book or book id is not found'
+        }); 
+        
+        if(fileData && !response[0]) cloudinary.uploader.destroy(fileData.filename);
+    } catch (error) {
+        reject(error);
+        if (fileData) cloudinary.uploader.destroy(fileData.filename);
+    }
+})
 // delete
