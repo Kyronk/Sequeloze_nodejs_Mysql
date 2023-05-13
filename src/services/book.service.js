@@ -103,4 +103,24 @@ export const updateBook = ({bId, ...body}, fileData) => new Promise (async (reso
         if (fileData) cloudinary.uploader.destroy(fileData.filename);
     }
 })
+
+
 // delete
+export const deleteBook = (bIds, filename) => new Promise (async (resolve, reject) => {
+    try {
+        console.log({bIds, filename})
+        const response = await db.Book.destroy({
+            where: {id: bIds}
+        })
+        // console.log(response);
+        resolve({
+            err: response > 0 ? 0: 1,
+            message: response > 0 ? `${response} book(s) delete`: 'can not delete book or book id is not found'
+        }); 
+
+        cloudinary.api.delete_resources(filename);
+        
+    } catch (error) {
+        reject(error);
+    }
+}) 

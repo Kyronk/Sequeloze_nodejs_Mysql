@@ -23,3 +23,4 @@ export const category_code = joi.string().uppercase().alphanum().required();
 export const image = joi.string().required();
 export const description = joi.string().required();
 export const bId = joi.string().required();
+export const filename = joi.array().required();

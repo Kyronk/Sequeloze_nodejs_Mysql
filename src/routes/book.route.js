@@ -20,6 +20,7 @@ route.use(verityToken);
 route.use(isAdmin);
 route.post('/create', uploader.single('image') , controller.createItemBook);
 route.put('/update', uploader.single('image'), controller.updateItemBook);
+route.delete('/delete', controller.deleteItemBook);
 
 
 module.exports = route;
