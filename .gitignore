@@ -1,6 +1,6 @@
 /node_modules
 .env
-/data
+
 uploader.js
 readme.md
 /src/config/config.js
