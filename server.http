@@ -10,8 +10,8 @@ POST http://localhost:4000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "name": "admin test",
-    "email": "admin@gmail.com",
+    "name": "user test",
+    "email": "user@gmail.com",
     "password": "123456"
 }
 
@@ -20,23 +20,114 @@ POST http://localhost:4000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "email": "test1@gmail.com",
+    "email": "user@gmail.com",
+    "password": "123456"
+}
+
+###
+POST http://localhost:4000/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "usr@gmail.com",
     "password": "123456"
 }
 
 ### 
 GET http://localhost:4000/api/v2/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJuYW1lIjoidXNlciB0ZXN0Iiwicm9sZV9jb2RlIjoiUjEiLCJpYXQiOjE2ODM2NTExMDksImV4cCI6MTY4NDA4MzEwOX0.geDO5xFNPqQvh2LsW7RNYvaoM9Cu0TPhEfAnV9SGDII
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJuYW1lIjoidXNlciB0ZXN0Iiwicm9sZV9jb2RlIjoiUjIiLCJpYXQiOjE2OTMwMjEwODIsImV4cCI6MTY5MzQ1MzA4Mn0.6mycOvkqBFYC39CSgoUX-hLqAixsZ20eHqHKj8RY5qo
 
 
 ### chỉ bắm 1 lần k nên mang ra để test route
 #GET http://localhost:4000/api/v2/insert/
 
 ###
-GET http://localhost:4000/api/v2/book/listbook?name=the_pass
+GET http://localhost:4000/api/v2/book/list
+###
+GET http://localhost:4000/api/v2/book/listbook
+###
+GET http://localhost:4000/api/v2/book/listbook?name=the_pa
 ###
 GET http://localhost:4000/api/v2/book/listbook?order[]=price&order[]=DESC&limit=2&name=you
+
 ###
-GET http://localhost:4000/api/v2/book/listbook?available=3
+GET http://localhost:4000/api/v2/book/listbook?order[]=price&order[]=DESC&page=2
+
 ###
-GET http://localhost:4000/api/v2/book/listbook?available[]=2&available[]=3
+GET http://localhost:4000/api/v2/book/listbook?category=PO6
+###
+GET http://localhost:4000/api/v2/book/listbook?limit=3&available[]=18&available[]=30
+
+### 
+GET http://localhost:4000/api/v2/book/item/0651062381f0636a
+###
+GET http://localhost:4000/api/v2/categories/list
+
+### 
+POST http://localhost:4000/api/v2/book/create-book
+Content-Type: application/json
+
+{
+    "title": "test t12",
+    "price": "12",
+    "available": "2",
+    "image": "test",
+    "description": "test",
+    "category_code": "HI17"
+}
+
+###
+PUT http://localhost:4000/api/v2/book/update-book/caf26f81-fe9c-4910-81cf-013e771c0c7a
+Content-Type: application/json 
+
+{
+    "title": "new book update v2"
+}
+
+### oder
+POST http://localhost:4000/api/v2/oder/create
+Content-Type: application/json 
+
+[
+    {
+        "book_id": "test1",
+        "quantity": 2,
+        "price": 10.4,
+        "user_id": "aadlfflkdfs",
+        "oder_id": "test"
+    },
+    {
+        "book_id": "test2",
+        "quantity": 3,
+        "price": 10.4,
+        "user_id": "aadlfflkdfs",
+        "oder_id": "test"
+    }
+
+]
+
+# {
+# [
+#         {
+#             "book_id": "test1",
+#             "quantity": 2,
+#             "price": 10.4,
+#             "user_id": "aadlfflkdfs",
+#             "oder_id": "test"
+#         },
+#         {
+#             "book_id": "test1",
+#             "quantity": 2,
+#             "price": 10.4,
+#             "user_id": "aadlfflkdfs",
+#             "oder_id": "test"
+#         },
+#         {
+#             "book_id": "test1",
+#             "quantity": 2,
+#             "price": 10.4,
+#             "user_id": "aadlfflkdfs",
+#             "oder_id": "test"
+#         },
+# ]
+# }

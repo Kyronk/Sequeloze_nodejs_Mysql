@@ -4,7 +4,7 @@ import * as service from '../services';
 import { internalServerError, badResponse } from '../middleware/handle_error';
 import { name, email, password } from '../helper/joi_schema';
 import joi from 'joi';
-import { response } from 'express';
+
 
 export const register = async(req, res) => {
     try {

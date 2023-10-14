@@ -17,15 +17,34 @@ const app = express();
 
 // dung de ket noi voi frond end 
 // nay la luu key vs lai method hop le 
-app.use(cors({
-    origin: process.env.CLIENT_URL,
-    methods: ['GET','POST', 'PUT', 'DELETE']
-}));
+// app.use(cors({
+//     origin: process.env.CLIENT_URL,
+//     methods: ['GET','POST', 'PUT', 'DELETE']
+// }));
+app.use(cors());
 
 //CRUD
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//
+// import {Users} from "./data/user";
+
+// app.get('/user', (req, res) => {
+//     const q = req.query.search;
+//     // console.log(q);
+//     const keys = ["first_name"];
+
+//     const search = (data) => {
+//         return data.filter((item) => 
+//             keys.some((key) => item[key].toLowerCase().includes(q))
+//         )
+//     };
+//     res.json(search(Users.splice(0,10)));
+//     // res.json(Users);
+// });
+
+//
 initRoute(app);
 // app.use('/', (req, res) => {
 //     res.send('server on');

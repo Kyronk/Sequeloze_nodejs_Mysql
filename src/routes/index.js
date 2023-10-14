@@ -14,6 +14,9 @@ import userRoute from './user.route';
 import insertRoute from './insert.route';
 
 import bookRoute from './book.route';
+import cateRoute from './category.route';
+
+import oderRoute from './oder.route';
 
 import { notFound } from '../middleware/handle_error';
 
@@ -23,6 +26,9 @@ const initRoute = (app) => {
     app.use('/api/v2/insert', insertRoute);
     
     app.use('/api/v2/book', bookRoute);
+    app.use('/api/v2/categories', cateRoute);
+    
+    app.use('/api/v2/oder', oderRoute);
 
 
 

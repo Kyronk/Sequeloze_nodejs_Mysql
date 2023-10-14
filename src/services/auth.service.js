@@ -2,16 +2,21 @@ import db from '../models';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+import { v4 as generateId } from 'uuid'; 
+
+
 
 const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(8));
 
 export const register = ({ name, email, password }) => new Promise( async (resolve, reject) => {
     try {
-
+        // const testId = generateId();
+        // console.log(testId)
 
         const response = await db.User.findOrCreate({
             where: {email: email},
             defaults: {
+                id: generateId(),
                 name: name,
                 email: email,
                 password: hashPassword(password)
@@ -33,7 +38,7 @@ export const register = ({ name, email, password }) => new Promise( async (resol
             err: response[1] ? 0: 1,
             message: response[1] ? 'Register is successfully': 'email is used',
             'access_token': `Bearer ${token}`
-        })
+        })   
 
     } catch (error) {
         reject(error);
@@ -61,6 +66,8 @@ export const login = ({ email, password }) => new Promise( async(resolve, reject
 
         resolve({
             err: token ? 0: -1,
+            id: token?  response.id: null,
+            name: token? response.name: null,
             message: token ? 'login is successfully': response ? 'password is wrong' : 'email has been registered',
             'access_token': token ? `Bearer ${token}` : token //(token này là null)
         });

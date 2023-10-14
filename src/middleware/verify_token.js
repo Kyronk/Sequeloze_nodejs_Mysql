@@ -7,11 +7,7 @@ const verityToken = (req, res, next) => {
 
     if(!token) return badResponse('Require authorization', res);
 
-
     const accessToken = token.split(' ')[1];
-
-
-
 
     jwt.verify( accessToken, 
                 process.env.JWT_SECRET, 
